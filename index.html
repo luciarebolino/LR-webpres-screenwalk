@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>COUNTER MODEL</title>
+    <style>
+    :root {
+  --scene-width: 100%;
+  /* --scene-height: 100%; */
+}
+
+
+
+body {
+    background-color: black;
+    margin: 0;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: scale(0.9); /* Adjust for zoom-out effect */
+    transform-origin: center; /* Ensures zoom-out happens from the center */
+    width: 100vw;
+    height: 100vh;
+}
+
+.full {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.video-style {
+    width: 100%;  /* Adjust as necessary */
+    height: 100%; /* Adjust as necessary */
+    object-fit: contain; /* Ensures the video fits within its container without cropping */
+}
+
+
+.face.front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Adjust as needed */
+}
+.scene {
+  width: var(--scene-width);
+  height: 900px;
+  perspective: 100000px; 
+}
+
+  .cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+
+  .face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* border: 1px solid #ffffff00;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #FFF; */
+    line-height: 10em;
+    text-align: center;
+  }
+
+  .face img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .front  { transform: rotateY(0deg) translateZ(600px); }
+.right  { transform: rotateY(90deg) translateZ(600px); }
+.left   { transform: rotateY(-90deg) translateZ(600px); }
+.back   { transform: rotateY(180deg) translateZ(600px); }
+.top    { transform: rotateX(90deg) translateZ(400px); }
+.bottom { transform: rotateX(-90deg) translateZ(400px); }
+
+
+
+  .face.back {
+    display: flex; /* Align iframes side by side */
+    justify-content: stretch; /* Stretch iframes to fill the face */
+    align-items: stretch; /* Stretch vertically */
+    overflow: hidden; /* Hide overflow */
+  
+    /* background-color:black; */
+}
+
+.pdf {
+    flex: 1; /* Divide space equally between iframes */
+    width: 50%; /* Explicitly set width */
+    /* height: calc(100% - 40px); Adjust height for top and bottom margins */
+    border: none; /* Remove border */
+    overflow-y: scroll; /* Enable vertical scroll */
+    /* margin-left: 10px; /* Left margin for spacing between documents */
+    /* margin-right: 10px; Right margin for spacing between documents  */
+    /* box-sizing: border-box; Include padding and border in the element's total width and height */
+}
+
+.face.front video {
+    width: 40%; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position to truly center the video */
+}
+
+
+/* Add a new class for mirroring the content of an iframe */
+.mirrored-content {
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1); /* For Safari and older browsers */
+}
+
+
+
+
+.face.back {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.pdf {
+    flex: 1;
+    width: 100%;
+    border: none;
+    overflow-y: scroll;
+    height: 100%;
+    position: relative;
+}
+
+/* Left half of the website, mirrored */
+.pdf.left-half {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    clip-path: inset(0 50% 0 0); /* Crop right half */
+    transform: scaleX(-1); /* Mirror content */
+}
+
+/* Right half of the website, mirrored */
+.pdf.right-half {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    clip-path: inset(0 0 0 50%); /* Crop left half */
+    transform: scaleX(-1); /* Mirror content */
+}
+
+
+
+
+
+
+.face.left {
+    background-color: white;
+
+}
+
+.face.right {
+    background-color: white;
+
+}
+
+.text-below {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: white; /* or any color you prefer */
+    text-align: right; /* Center the text */
+    margin-top: 20px; /* Adjust space between the cube and the text */
+    font-size: 20px; /* Adjust font size as needed */
+    /* Additional styling as needed */
+}
+    </style>
+</head>
+
+<body>
+    <div class="full">
+        <div class="scene">
+        <div class="cube">
+            <div class="face front">  <video src="Sequence 01-1-1.webm" type="video/webm" loop autoplay muted></div>
+            <div class="face right">   <iframe src="https://luciarebolino.github.io/WaterIndex-workshop/" width="100%" height="99%"></iframe></div>
+<!--             <div class="face left">  <iframe src="https://observablehq.com/embed/61cfc024419dc6c2?cells=viewof+past_months%2Ctext_recent_fix_look_back%2Ctable_codejson_released_since_X_months_ago%2Cnumber_of_months_back%2Ctoday%2Cdate_at_X_months_ago%2Ctable_catalog_json%2Ctable_code_json" width="100%" height="100%"></iframe></div> -->
+              <div class="face left">  <iframe src="https://luciarebolino.github.io/Open_Folder/" width="100%" height="99%"></iframe></div>
+            <div class="face back">
+                <div class="face back">
+                    <iframe class="pdf right-half" src="https://luciarebolino.github.io/unpredictable-atmosphere-screenwalk/"></iframe>
+                    <iframe class="pdf left-half" src="https://luciarebolino.github.io/unpredictable-atmosphere-screenwalk/"></iframe>
+                </div>
+                
+            </div>    
+            <div class="face top"><iframe src="https://luciarebolino.github.io/UA24GHZ/" width="100%" height="100%"></iframe>
+            </div>
+            <div class="face bottom"> <video class="video-style" autoplay loop muted>
+                <source src="UA_tools.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        </div>
+        <!-- <div class="face top"><iframe src="https://luciarebolino.github.io/UA24GHZ/" width="100%" height="100%"></iframe>
+        </div> -->
+        </div>
+    </div>
+    <div class="text-below">
+        <p></p>
+    </div>
+      </div>
+      <script>
+const cube = document.querySelector(".cube");
+let isPanning = false;
+let initialX = 0;
+let currentRotationY = 0; // Track the current horizontal rotation
+let currentRotationX = 0; // Track the current vertical rotation
+
+cube.addEventListener("mousedown", (event) => {
+    isPanning = true;
+    initialX = event.clientX;
+});
+
+cube.addEventListener("mousemove", (event) => {
+    if (isPanning) {
+        const deltaX = event.clientX - initialX;
+        currentRotationY += (deltaX / cube.clientWidth) * 360;
+        cube.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg)`;
+        initialX = event.clientX;
+    }
+});
+
+cube.addEventListener("mouseup", () => {
+    isPanning = false;
+});
+
+document.addEventListener("keydown", (event) => {
+    const rotationStep = 90; // Rotation step in degrees
+    switch (event.key) {
+        case "ArrowRight":
+            currentRotationY -= rotationStep;
+            break;
+        case "ArrowLeft":
+            currentRotationY += rotationStep;
+            break;
+        case "ArrowUp":
+            currentRotationX -= rotationStep; // Rotate upwards
+            break;
+        case "ArrowDown":
+            currentRotationX += rotationStep; // Rotate downwards
+            break;
+        case "Enter":
+            isPanning = false; // Stop panning when Enter is pressed
+            break;
+        case "Shift":
+            currentRotationY = 0; // Reset horizontal rotation
+            currentRotationX = 0; // Reset vertical rotation
+            break;
+    }
+    cube.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg)`;
+});
+
+
+
+
+let zoomLevel = 0.9; // Initial zoom level
+
+function updateZoom() {
+    document.body.style.transform = `scale(${zoomLevel})`;
+    document.body.style.transformOrigin = "center";
+}
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "-") { // Zoom out
+        zoomLevel -= 0.05;
+        updateZoom();
+    }
+    if (event.key === "+") { // Zoom in
+        zoomLevel += 0.05;
+        updateZoom();
+    }
+});
+
+
+      </script>
+
+    </div>
+</body>
+
+</html>
