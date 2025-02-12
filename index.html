@@ -52,7 +52,7 @@ body {
 .scene {
   width: var(--scene-width);
   height: 900px;
-  perspective: 100000px; 
+  perspective: 10000px; 
 }
 
   .cube {
@@ -80,10 +80,10 @@ body {
     object-fit: contain;
   }
 
-  .front  { transform: rotateY(0deg) translateZ(600px); }
-.right  { transform: rotateY(90deg) translateZ(600px); }
-.left   { transform: rotateY(-90deg) translateZ(600px); }
-.back   { transform: rotateY(180deg) translateZ(600px); }
+  .front  { transform: rotateY(0deg) translateZ(700px); }
+.right  { transform: rotateY(90deg) translateZ(700px); }
+.left   { transform: rotateY(-90deg) translateZ(700px); }
+.back   { transform: rotateY(180deg) translateZ(700px); }
 .top    { transform: rotateX(90deg) translateZ(400px); }
 .bottom { transform: rotateX(-90deg) translateZ(400px); }
 
@@ -172,10 +172,15 @@ body {
 
 }
 
-.face.right {
-    background-color: white;
-
+.face.right video {
+    width: 100%; /* Match the width of the iframe */
+    height: 100%; /* Match the height of the iframe */
+    object-fit: cover; /* Ensures the video fills the container */
+    position: absolute;
+    top: 0;
+    left: 0;
 }
+
 
 .text-below {
     font-family: Arial, Helvetica, sans-serif;
@@ -194,7 +199,8 @@ body {
         <div class="scene">
         <div class="cube">
             <div class="face front">  <video src="Sequence 01-1-1.webm" type="video/webm" loop autoplay muted></div>
-            <div class="face right">   <iframe src="https://luciarebolino.github.io/WaterIndex-workshop/" width="100%" height="99%"></iframe></div>
+            <!-- <div class="face right">   <iframe src="https://luciarebolino.github.io/WaterIndex-workshop/" width="100%" height="99%"></iframe></div> -->
+            <div class="face right">   <video src="interference-fast.mp4" type="video/webm" loop autoplay muted></div>
 <!--             <div class="face left">  <iframe src="https://observablehq.com/embed/61cfc024419dc6c2?cells=viewof+past_months%2Ctext_recent_fix_look_back%2Ctable_codejson_released_since_X_months_ago%2Cnumber_of_months_back%2Ctoday%2Cdate_at_X_months_ago%2Ctable_catalog_json%2Ctable_code_json" width="100%" height="100%"></iframe></div> -->
               <div class="face left">  <iframe src="https://luciarebolino.github.io/Open_Folder/" width="100%" height="99%"></iframe></div>
             <div class="face back">
